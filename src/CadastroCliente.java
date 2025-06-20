@@ -66,9 +66,10 @@ public class CadastroCliente {
 
                 System.out.print("Quantos dias você deseja alugar o equipamento? ");
                 int dias = teclado.nextInt();
-                teclado.nextLine(); // Limpa o buffer do teclado
+                teclado.nextLine();
                 System.out.print("Você deseja adicionar seguro? (true/false): ");
                 boolean seguro = teclado.nextBoolean();
+                teclado.nextLine();
                 System.out.println("Equipamento alugado com sucesso, o Valor total ficou R$ "
                         + (equipamento.calcValorLocacao(dias, seguro) * qntDesejada));
             } else {

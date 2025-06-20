@@ -149,6 +149,8 @@ public class Aluguel {
                 case 10:
                     // Inovaçao - Ver o equipamento que está sendo mais alugado(mais demanda) dentre os clientes registrados
                     // Pega a array dos clientes, analisa um por um e vê qual codigo aparece mais
+                    Inovacao inovacao = new Inovacao();
+                    inovacao.maiorDemanda();
                     System.out.println();
                     break;
                 case 11:
