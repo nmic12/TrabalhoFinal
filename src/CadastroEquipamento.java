@@ -16,7 +16,7 @@ public class CadastroEquipamento {
     }
 
     public Equipamento addEquipamento(int codigoEquipamento) {
-        CadastroEquipamento cEquipamento = new CadastroEquipamento();
+        // CadastroEquipamento cEquipamento = new CadastroEquipamento();
         //int codigoEquipamento = 0; // Corrigido: instanciar Random
         System.out.print("Insira o nome do equipamento: ");
         String nomeEquipamento = teclado.nextLine();
@@ -64,7 +64,6 @@ public class CadastroEquipamento {
     public Equipamento buscaEquipPeloCodigo(int codigo) {
         for (int i = 0; i < eArr.length; i++) {
             if (eArr[i] != null && eArr[i].getCodigo() == codigo) {
-                // System.out.println("EQUIPAMENTO DE CODIGO "+codigo); // DEBUG ||| o equipamento tá sendo achado, só que quando é um número maior que 1 ele printa que não existe o equipamento
                 return eArr[i];
             }
             else {

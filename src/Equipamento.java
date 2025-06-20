@@ -86,7 +86,7 @@ public class Equipamento {
     public String toString() {
         return "Equipamento { Código: " + codigo + " | Nome: " + nome + " | Tipo: " + tipo
                 + " | Quantidade Disponível: " + quantDispLocacao + " | Valor base locação: " + valorBaseLocacao
-                + " | Quantidade Alugada: " + countTotal + " } ";
+                + " } ";
     }
 
     // !!!!!!!
@@ -97,9 +97,9 @@ public class Equipamento {
     // tinha, enfim... Olha ai o novo método e vê oq tu acha
     //
 
-    public void retirar(int qntDesejada) {
+    public void retirar(Equipamento equipamento, int qntDesejada) {
 
-        while (quantDispLocacao < qntDesejada) {
+        while (equipamento.getQuantDispLocacao() < qntDesejada) {
             System.out.println();
             System.out.println(
                     "A quantidade desejada excede a quantia do estoque. Quantidade Disponível para locação do equipamento: "
@@ -107,25 +107,34 @@ public class Equipamento {
             System.out.print("Digite uma nova quantidade desejada: ");
             qntDesejada = teclado.nextInt(); // Solicita nova quantidade
         }
-        quantDispLocacao = quantDispLocacao - qntDesejada;
-        System.out.println("Nova quantidade disponivel: " + quantDispLocacao);
+        equipamento.setQuantDispLocacao(equipamento.getQuantDispLocacao() - qntDesejada);
+        System.out.println("Nova quantidade disponivel: " + equipamento.getQuantDispLocacao());
     }
 
-    /*
-     * public void retirar() {
-     * if(quantDispLocacao > 0) {
-     * quantDispLocacao--;
-     * System.out.println("Nova quantidade disponivel: " + quantDispLocacao);
-     * } else {
-     * System.out.println("Estamos sem estoque deste equipamento");
-     * }
-     * }
-     */
 
-    public void devolver() {
-        quantDispLocacao++;
-        System.out.println("Nova quantidade disponivel: " + quantDispLocacao);
+    public void devolver(CadastroEquipamento cEquipamento, CadastroCliente cCliente) {
+        Scanner teclado = new Scanner(System.in);
+        System.out.print("Digite o nome do cliente que está devolvendo o equipamento: ");
+        String nomeCliente = teclado.nextLine();
+
+        for (int i = 0; i < cCliente.cArr.length; i++) {
+            if (cCliente.cArr[i] != null && cCliente.cArr[i].getNome().equalsIgnoreCase(nomeCliente)) {
+                Equipamento equipamento = cCliente.cArr[i].getDadosEquipamento();
+                int quantidadeAlugada = cCliente.cArr[i].getQuantidadeAlugada();
+                if (equipamento != null) {
+                    equipamento.setQuantDispLocacao(equipamento.getQuantDispLocacao() + quantidadeAlugada);
+                    System.out.println("Equipamento devolvido ao estoque: " + equipamento.getNome());
+                    cCliente.cArr[i].setDadosEquipamento(null);
+                } else {
+                    System.out.println("Este cliente não possui equipamento alugado.");
+                }
+                return;
+            }
+        }
+        System.out.println("Cliente não encontrado.");
     }
+
+    
 
     public double calcValorLocacao(int dias, boolean seguro) {
         double valor = valorBaseLocacao;

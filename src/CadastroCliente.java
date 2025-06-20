@@ -8,26 +8,13 @@ public class CadastroCliente {
 
     public CadastroCliente() {
         cArr = new Cliente[10];
-        // cArr[1] = new Cliente(421421, "Nicolas ", "Academia2", null);
     }
 
     Scanner teclado = new Scanner(System.in);
 
-    // public Cliente addCliente(int matricula, String nome, String academia,
-    // Equipamento dadosEquipamento){
-    // System.out.print("Insira o nome do cliente: ");
-    // String nomeCliente = teclado.next();
-    // System.out.println();
-    // System.out.print("Insira a academia do cliente: ");
-    // String academiaCliente = teclado.next();
-    // System.out.println();
-
-    // return new Cliente(matricula, nomeCliente, academiaCliente,
-    // dadosEquipamento);
-    // }
-
-    public Cliente addCliente() {
-        CadastroEquipamento cEquipamento = new CadastroEquipamento();
+    
+    public Cliente addCliente(CadastroEquipamento cEquipamento) {
+        //CadastroEquipamento cEquipamento = new CadastroEquipamento();
         int matriculaCliente = new Random().nextInt(10000); // Corrigido: instanciar Random
 
         System.out.print("Insira o nome do cliente: ");
@@ -53,7 +40,7 @@ public class CadastroCliente {
         teclado.nextLine();
 
         Equipamento equipamento = cEquipamento.buscaEquipPeloCodigo(codigoEquipamento); // Busca o equipamento desejado
-                                                                                        // pelo código
+        int qntDesejada = 0;
         if (equipamento != null) // verifica se o código do equipamento existe
         {
             if (equipamento.getQuantDispLocacao() > 1) // Verifica se ainda há uma quantidade disponível no estoque
@@ -61,8 +48,8 @@ public class CadastroCliente {
                 System.out.println(
                         "Quanto deseja retirar do estoque? (Quantidade Disponível para locação do equipamento: "
                                 + equipamento.getQuantDispLocacao() + ")");
-                int qntDesejada = teclado.nextInt();
-                equipamento.retirar(qntDesejada);
+                qntDesejada = teclado.nextInt();
+                equipamento.retirar(equipamento, qntDesejada); 
 
                 System.out.print("Quantos dias você deseja alugar o equipamento? ");
                 int dias = teclado.nextInt();
@@ -72,6 +59,7 @@ public class CadastroCliente {
                 teclado.nextLine();
                 System.out.println("Equipamento alugado com sucesso, o Valor total ficou R$ "
                         + (equipamento.calcValorLocacao(dias, seguro) * qntDesejada));
+                ;
             } else {
                 System.out.println("O equipamento desejado está fora de estoque.");
             }
@@ -79,7 +67,7 @@ public class CadastroCliente {
         // cEquipamento.removeEquipamento(codigoEquipamento); // Remove o equipamento do
         // estoque
 
-        return new Cliente(matriculaCliente, nomeCliente, academiaCliente, equipamento);
+        return new Cliente(matriculaCliente, nomeCliente, academiaCliente, equipamento, qntDesejada);
     }
 
     // Busca Cliente pelo nome

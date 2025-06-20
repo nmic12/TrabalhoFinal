@@ -3,13 +3,23 @@ public class Cliente {
     private String nome;
     private String academia;
     private Equipamento dadosEquipamento;
+    private int quantidadeAlugada;
 
-    public Cliente(int matricula, String nome, String academia, Equipamento dadosEquipamento)
+    public Cliente(int matricula, String nome, String academia, Equipamento dadosEquipamento, int quantidadeAlugada)
     {
         this.matricula = matricula;
         this.nome = nome;
         this.academia = academia;
         this.dadosEquipamento = dadosEquipamento;
+        this.quantidadeAlugada = quantidadeAlugada;
+    }
+
+    public int getQuantidadeAlugada() {
+        return quantidadeAlugada;
+    }
+
+    public void setQuantidadeAlugada(int quantidadeAlugada) {
+        this.quantidadeAlugada = quantidadeAlugada;
     }
 
     public int getMatricula() {

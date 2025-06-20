@@ -33,7 +33,7 @@ public class Aluguel {
                     // Incluir cliente
                     for (int i = 0; i < cCliente.cArr.length; i++) {
                         if (cCliente.cArr[i] == null) {
-                            cCliente.cArr[i] = cCliente.addCliente();
+                            cCliente.cArr[i] = cCliente.addCliente(cEquipamento);
                             // System.out.println("Cliente adicionado com sucesso na pos " + i);
                             System.out.println("Cliente: " + cCliente.cArr[i].toString()
                                     + " Adicionado com sucesso na posição " + i);
@@ -94,7 +94,7 @@ public class Aluguel {
                         if (equipamento != null) {
                             System.out.print("Quantos equipamentos deseja retirar: ");
                             int qntDesejada = cin.nextInt();
-                            equipamento.retirar(qntDesejada);
+                            equipamento.retirar(equipamento, qntDesejada);
                             System.out.println("Equipamento retirado com sucesso: " + equipamento.toString());
                         } else {
                             System.out.println("Equipamento não encontrado com o código: " + codigoEquipamento);
@@ -107,7 +107,7 @@ public class Aluguel {
                         if (equipamento != null) {
                             System.out.print("Quantos equipamentos deseja retirar: ");
                             int qntDesejada = cin.nextInt();
-                            equipamento.retirar(qntDesejada);
+                            equipamento.retirar(equipamento, qntDesejada);
                             System.out.println("Equipamento retirado com sucesso: " + equipamento.toString());
                         }
                         // Retirar equipamento
@@ -126,7 +126,7 @@ public class Aluguel {
                         // Verifica se o código do equipamento existe
                         Equipamento equipamento = cEquipamento.buscaEquipPeloCodigo(codigoEquipamento);
                         if (equipamento != null) {
-                            equipamento.devolver();
+                            equipamento.devolver(cEquipamento, cCliente);
                             System.out.println("Equipamento devolvido com sucesso: " + equipamento.toString());
                         } else {
                             System.out.println("Equipamento não encontrado com o código: " + codigoEquipamento);
@@ -136,7 +136,7 @@ public class Aluguel {
 
                         Equipamento equipamento = cEquipamento.buscaEquipPeloNome();
                         if (equipamento != null) {
-                            equipamento.devolver();
+                            equipamento.devolver(cEquipamento, cCliente);
                             System.out.println("Equipamento devolvido com sucesso: " + equipamento.toString());
                         }
                     }
@@ -150,7 +150,7 @@ public class Aluguel {
                     // Inovaçao - Ver o equipamento que está sendo mais alugado(mais demanda) dentre os clientes registrados
                     // Pega a array dos clientes, analisa um por um e vê qual codigo aparece mais
                     Inovacao inovacao = new Inovacao();
-                    inovacao.maiorDemanda();
+                    inovacao.maiorDemanda(cCliente, cEquipamento);
                     System.out.println();
                     break;
                 case 11:
