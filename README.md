@@ -23,9 +23,9 @@ Gerar relatórios simples que ajudam o negócio a tomar decisões (como investir
 Dar visibilidade ao que está em alta entre os clientes.
 
 🧑‍💻 Autores e Divisão de Tarefas
-Membro:	                 Responsabilidade:
-Nícolas Michels	         Modelagem das classes base e a classe Inovacao.java.
-Leonardo Dornelles	     Implementação dos cadastros e da classe Aluguel.
+
+Nícolas Michels -> Modelagem das classes base e a classe Inovacao.java.
+Leonardo Dornelles -> Implementação dos cadastros e da classe Aluguel.
 
 🎥 Pitch do Sistema
 Assista ao pitch em vídeo que explica a arquitetura, a divisão das tarefas e o valor da funcionalidade inovadora aqui:
