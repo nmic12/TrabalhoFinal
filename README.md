@@ -25,6 +25,7 @@ Dar visibilidade ao que está em alta entre os clientes.
 🧑‍💻 Autores e Divisão de Tarefas
 
 Nícolas Michels -> Modelagem das classes base e a classe Inovacao.java.
+
 Leonardo Dornelles -> Implementação dos cadastros e da classe Aluguel.
 
 🎥 Pitch do Sistema
