@@ -1,7 +1,8 @@
-Sistema de Locação de Equipamentos 🎥⚙️
+🎥⚙️ Sistema de Locação de Equipamentos 🎥⚙️
 Este repositório contém o código-fonte do sistema de locação de equipamentos, desenvolvido como parte da disciplina Fundamentos de Programação na  PUCRS(Pontifícia Universidade Católica do Rio Grande do Sul). O sistema permite cadastrar clientes e equipamentos, gerenciar aluguéis e exibir relatórios sobre os itens mais alugados.
 
 📂 Estrutura do Projeto
+
 Cliente.java — A classe Cliente representa os clientes cadastrados no sistema de locação. Ela mantém os dados principais de cada cliente e fornece métodos para acessar e manipular essas informações.
 
 Equipamento.java — A classe Equipamento representa os equipamentos que podem ser cadastrados e alugados no sistema. Ela armazena as principais informações sobre cada item e fornece métodos para acessar e manipular esses dados.
